@@ -3,649 +3,650 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Experiments - Code Collection</title>
+    <title>sri ramakrishnan | Creative Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #00f0ff;
+            --secondary: #ff00e4;
+            --dark: #0a0a0a;
+            --light: #f5f5f5;
+            --gray: #1a1a1a;
+        }
+        
+        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
         }
-
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-            line-height: 1.6;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
         }
-
+        
+        ::selection {
+            background: var(--primary);
+            color: var(--dark);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 0 40px;
         }
-
-        h1 {
-            text-align: center;
-            color: white;
-            margin-bottom: 30px;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .experiment {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .experiment:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .experiment-title {
-            color: #667eea;
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
-        }
-
-        .section {
-            margin-bottom: 20px;
-        }
-
-        .section-label {
-            font-weight: bold;
-            color: #764ba2;
-            margin-bottom: 8px;
-            font-size: 1.1em;
-        }
-
-        .section-content {
-            color: #333;
-            margin-left: 10px;
-        }
-
-        .code-container {
+        
+        section {
+            padding: 100px 0;
             position: relative;
-            background: #1e1e1e;
-            border-radius: 5px;
-            padding: 15px;
-            margin-top: 10px;
         }
-
-        .code-header {
+        
+        /* Animated Background */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 240, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 0, 228, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            opacity: 0.5;
+        }
+        
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.8);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            position: relative;
+            font-weight: 500;
+            color: var(--light);
+            transition: all 0.3s;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: var(--dark);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 240, 255, 0.3);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+            margin-left: 20px;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+        
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40%;
+            max-width: 600px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            opacity: 0.9;
+        }
+        
+        /* About Section */
+        .about {
+            background: var(--gray);
+            clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+            padding: 150px 0;
+        }
+        
+        .section-header {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .section-subtitle {
+            color: rgba(255,255,255,0.7);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .skill {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .skill:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: var(--gray);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+        
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+        
+        .project-info {
+            padding: 25px;
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
             margin-bottom: 10px;
         }
-
-        .code-label {
-            color: #fff;
-            font-weight: bold;
-            font-size: 0.9em;
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
         }
-
-        .copy-btn {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: background 0.3s;
+        
+        /* Contact Section */
+        .contact {
+            background: var(--gray);
+            clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+            padding: 150px 0 200px;
         }
-
-        .copy-btn:hover {
-            background: #764ba2;
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
         }
-
-        .copy-btn:active {
-            transform: scale(0.95);
+        
+        .form-group {
+            margin-bottom: 25px;
         }
-
-        .copy-btn.copied {
-            background: #28a745;
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
         }
-
-        pre {
-            margin: 0;
-            overflow-x: auto;
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s;
         }
-
-        code {
-            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-            font-size: 0.9em;
-            color: #d4d4d4;
-            line-height: 1.5;
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(0, 240, 255, 0.05);
         }
-
-        .keyword { color: #569cd6; }
-        .string { color: #ce9178; }
-        .function { color: #dcdcaa; }
-        .number { color: #b5cea8; }
-        .comment { color: #6a9955; }
-
-        .footer {
+        
+        /* Footer */
+        footer {
+            padding: 50px 0;
             text-align: center;
-            color: white;
-            margin-top: 40px;
-            padding: 20px;
+            background: var(--dark);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: var(--light);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-image {
+                width: 50%;
+                opacity: 0.5;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 25px;
+            }
+            
+            .menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--dark);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                transition: all 0.5s;
+                z-index: 1000;
+                border-left: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .hero {
+                text-align: center;
+            }
+            
+            .hero-image {
+                display: none;
+            }
+            
+            .hero p {
+                margin: 0 auto 40px;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🤖 AI Experiments - Code Collection</h1>
-
-        <!-- Experiment 1 -->
-        <div class="experiment">
-            <div class="experiment-title">Experiment 1: 8‑Puzzle (A*)</div>
-            <div class="section">
-                <div class="section-label">Aim:</div>
-                <div class="section-content">Solves the 8‑puzzle using A* search with cost = number of misplaced tiles; uses a priority queue and reconstructs the path when cost hits 0.[1]</div>
-            </div>
-            <div class="section">
-                <div class="section-label">Algorithm:</div>
-                <div class="section-content">The heuristic "misplaced tiles" is admissible, so A* finds an optimal solution for solvable instances; neighbors are generated by sliding the blank up/down/left/right.[1]</div>
-            </div>
-            <div class="code-container">
-                <div class="code-header">
-                    <span class="code-label">Code:</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'code1')">Copy</button>
+    <!-- Animated Background -->
+    <div class="bg-pattern"></div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#home" class="logo">sri ramakrishnan</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Work</a></li>
+                    
+                </ul>
+                <div class="menu-btn">
+                    <i class="fas fa-bars"></i>
                 </div>
-                <pre><code id="code1">import heapq
-
-N = 3
-DIRS = [(-1,0),(1,0),(0,-1),(0,1)]
-
-def h(s, goal):
-    return sum(s[i]!=goal[i] and s[i]!=0 for i in range(9))
-
-def neighbors(s):
-    z = s.index(0); x,y = divmod(z,3)
-    for dx,dy in DIRS:
-        nx,ny = x+dx, y+dy
-        if 0<=nx<3 and 0<=ny<3:
-            nz = 3*nx+ny
-            t = list(s); t[z],t[nz] = t[nz],t[z]
-            yield tuple(t)
-
-def astar(start, goal):
-    pq = [(h(start,goal), 0, start, None)]
-    came = {}
-    g = {start:0}
-    seen = set()
-    while pq:
-        f, gc, s, par = heapq.heappop(pq)
-        if s in seen: continue
-        came[s] = par; seen.add(s)
-        if s==goal:
-            path=[]
-            while s is not None: path.append(s); s=came[s]
-            return list(reversed(path))
-        for nb in neighbors(s):
-            ng = gc+1
-            if ng < g.get(nb, 1e9):
-                g[nb]=ng
-                heapq.heappush(pq,(ng+h(nb,goal), ng, nb, s))
-    return None
-
-start = (1,2,3,5,6,0,7,8,4)
-goal  = (1,2,3,5,8,6,0,7,4)
-sol = astar(start, goal)
-for state in sol: print(*[state[i:i+3] for i in range(0,9,3)], sep="\n"); print()</code></pre>
-            </div>
+            </nav>
         </div>
-
-        <!-- Experiment 2 -->
-        <div class="experiment">
-            <div class="experiment-title">Experiment 2: N‑Queens (Backtracking)</div>
-            <div class="section">
-                <div class="section-label">Aim:</div>
-                <div class="section-content">Places N queens on an N×N board so none attack each other using recursive backtracking and safety checks for row/diagonals.[2]</div>
-            </div>
-            <div class="section">
-                <div class="section-label">Algorithm:</div>
-                <div class="section-content">At each column, try a safe row; backtrack when no safe row exists; terminates after placing all N queens.[2]</div>
-            </div>
-            <div class="code-container">
-                <div class="code-header">
-                    <span class="code-label">Code:</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'code2')">Copy</button>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, I'm <span class="gradient-text">sri ramakrishnan</span><br>Creative Developer</h1>
+                <p>I build immersive digital experiences that blend cutting-edge technology with stunning design to create meaningful connections between brands and their audiences.</p>
+                <div>
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    
                 </div>
-                <pre><code id="code2">def solve_n_queens(N):
-    cols, d1, d2, pos = set(), set(), set(), []
-    def bt(c=0):
-        if c==N: return True
-        for r in range(N):
-            if r in cols or (r-c) in d1 or (r+c) in d2: continue
-            cols.add(r); d1.add(r-c); d2.add(r+c); pos.append(r)
-            if bt(c+1): return True
-            cols.remove(r); d1.remove(r-c); d2.remove(r+c); pos.pop()
-        return False
-    bt()
-    board = [[0]*N for _ in range(N)]
-    for c,r in enumerate(pos): board[r][c]=1
-    return board
-
-N = 8
-ans = solve_n_queens(N)
-for row in ans: print(" ".join(map(str,row)))</code></pre>
             </div>
+            <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Creative Developer" class="hero-image floating">
         </div>
-
-        <!-- Experiment 3 -->
-        <div class="experiment">
-            <div class="experiment-title">Experiment 3: A* on Graph</div>
-            <div class="section">
-                <div class="section-label">Aim:</div>
-                <div class="section-content">Implements A* on a symbolic graph with a heuristic table; returns the found path A→…→G.[3]</div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gradient-text">About Me</h2>
+                <p class="section-subtitle">Get to know the person behind the code</p>
             </div>
-            <div class="section">
-                <div class="section-label">Algorithm:</div>
-                <div class="section-content">Uses f(n)=g(n)+h(n) to always expand the most promising node; reconstructs path from parent map.[3]</div>
-            </div>
-            <div class="code-container">
-                <div class="code-header">
-                    <span class="code-label">Code:</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'code3')">Copy</button>
+            <div class="about-content">
+                <div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Innovative Solutions Through Creative Coding</h3>
+                    <p style="margin-bottom: 20px; line-height: 1.8;">With over 7 years of experience in the digital space, I specialize in creating interactive web applications that push boundaries and deliver exceptional user experiences.</p>
+                    <p style="margin-bottom: 20px; line-height: 1.8;">My approach combines technical expertise with artistic vision, ensuring every project is not only functional but also visually captivating and intuitively designed.</p>
+                    <div class="skills">
+                        <span class="skill">React</span>
+                        <span class="skill">Three.js</span>
+                        <span class="skill">Node.js</span>
+                        <span class="skill">GSAP</span>
+                        <span class="skill">WebGL</span>
+                        <span class="skill">Figma</span>
+                        <span class="skill">UI/UX</span>
+                        <span class="skill">Animation</span>
+                    </div>
                 </div>
-                <pre><code id="code3">import heapq
-
-G = {
-  'A': [('B',2),('E',3)],
-  'B': [('C',1),('G',15)],
-  'C': [],
-  'D': [('G',1)],
-  'E': [('D',6)]
-}
-H = {'A':11,'B':5,'C':23,'D':1,'E':7,'G':0}
-
-def astar(s, t):
-    pq=[(H[s],0,s,None)]
-    came, best = {}, {s:0}
-    seen=set()
-    while pq:
-        f,gc,u,par = heapq.heappop(pq)
-        if u in seen: continue
-        came[u]=par; seen.add(u)
-        if u==t:
-            path=[]
-            while u is not None: path.append(u); u=came[u]
-            return list(reversed(path))
-        for v,w in G.get(u,[]):
-            ng = gc+w
-            if ng < best.get(v,1e9):
-                best[v]=ng
-                heapq.heappush(pq,(ng+H.get(v,1e9), ng, v, u))
-    return None
-
-print(astar('A','G'))</code></pre>
-            </div>
-        </div>
-
-        <!-- Experiment 4 -->
-        <div class="experiment">
-            <div class="experiment-title">Experiment 4: Hill Climbing</div>
-            <div class="section">
-                <div class="section-label">Aim:</div>
-                <div class="section-content">Starts from a random x, evaluates neighbors at step size, moves to better neighbor until no improvement.[3]</div>
-            </div>
-            <div class="section">
-                <div class="section-label">Algorithm:</div>
-                <div class="section-content">Greedy ascent converges to local maximum near x=2 for this concave quadratic.[3]</div>
-            </div>
-            <div class="code-container">
-                <div class="code-header">
-                    <span class="code-label">Code:</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'code4')">Copy</button>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="About Me" style="width: 100%; border-radius: 15px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
                 </div>
-                <pre><code id="code4">import random
-
-f = lambda x: -(x*x) + 4*x + 10
-
-def hill(start=None, step=0.1, it=1000):
-    x = random.uniform(-10,10) if start is None else start
-    fx = f(x)
-    for _ in range(it):
-        candidates = [x-step, x+step]
-        vals = [f(c) for c in candidates]
-        j = 0 if vals[0]>=vals[1] else 1
-        if vals[j] > fx:
-            x, fx = candidates[j], vals[j]
-        else:
-            break
-    return x, fx
-
-print(hill())</code></pre>
             </div>
         </div>
-
-        <!-- Experiment 5 -->
-        <div class="experiment">
-            <div class="experiment-title">Experiment 5: Alpha–Beta Pruning</div>
-            <div class="section">
-                <div class="section-label">Aim:</div>
-                <div class="section-content">Runs depth‑limited minimax with alpha–beta pruning over a full binary tree (values array), prints optimal value.[4]</div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gradient-text">Featured Work</h2>
+                <p class="section-subtitle">A selection of my recent projects</p>
             </div>
-            <div class="section">
-                <div class="section-label">Algorithm:</div>
-                <div class="section-content">Alpha (best for MAX so far) and beta (best for MIN so far) bounds cut off branches that can't influence the result.[4]</div>
-            </div>
-            <div class="code-container">
-                <div class="code-header">
-                    <span class="code-label">Code:</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'code5')">Copy</button>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Project 1" class="project-img">
+                    <div class="project-info">
+                        <h3 class="project-title">Immersive 3D Portfolio</h3>
+                        <p>A cutting-edge portfolio experience using Three.js and WebGL to create an interactive 3D environment.</p>
+                        <div class="project-links">
+                            <a href="https://example.com/demo1" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.9rem;">Live Demo</a>
+                            <a href="https://github.com/username/project1" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Code</a>
+                        </div>
+                    </div>
                 </div>
-                <pre><code id="code5">MINV, MAXV = -10**9, 10**9
-
-def minimax(depth, idx, max_turn, values, alpha, beta, max_depth=3):
-    if depth==max_depth: return values[idx]
-    if max_turn:
-        best = MINV
-        for i in range(2):
-            best = max(best, minimax(depth+1, idx*2+i, False, values, alpha, beta, max_depth))
-            alpha = max(alpha, best)
-            if beta <= alpha: break
-        return best
-    else:
-        best = MAXV
-        for i in range(2):
-            best = min(best, minimax(depth+1, idx*2+i, True, values, alpha, beta, max_depth))
-            beta = min(beta, best)
-            if beta <= alpha: break
-        return best
-
-values = [3,5,6,9,1,2,0,-1]
-print("Optimal:", minimax(0,0,True,values,MINV,MAXV))</code></pre>
-            </div>
-        </div>
-
-        <!-- Experiment 6 -->
-        <div class="experiment">
-            <div class="experiment-title">Experiment 6: Sudoku (Backtracking)</div>
-            <div class="section">
-                <div class="section-label">Aim:</div>
-                <div class="section-content">Classic backtracking CSP: pick first empty, try 1..9 consistent with row/column/box, recurse, backtrack on failure.[4]</div>
-            </div>
-            <div class="section">
-                <div class="section-label">Algorithm:</div>
-                <div class="section-content">Sudoku constraints are local; backtracking with legality checks systematically finds a valid assignment if one exists.[4]</div>
-            </div>
-            <div class="code-container">
-                <div class="code-header">
-                    <span class="code-label">Code:</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'code6')">Copy</button>
-                </div>
-                <pre><code id="code6">def find_empty(b):
-    for r in range(9):
-        for c in range(9):
-            if b[r][c]==0: return r,c
-    return None
-
-def legal(b,r,c,v):
-    if v in b[r]: return False
-    if v in [b[i][c] for i in range(9)]: return False
-    br, bc = (r//3)*3, (c//3)*3
-    for i in range(br, br+3):
-        for j in range(bc, bc+3):
-            if b[i][j]==v: return False
-    return True
-
-def solve(b):
-    spot = find_empty(b)
-    if not spot: return True
-    r,c = spot
-    for v in range(1,10):
-        if legal(b,r,c,v):
-            b[r][c]=v
-            if solve(b): return True
-            b[r][c]=0
-    return False
-
-board = [
-[5,3,0,0,7,0,0,0,0],
-[6,0,0,1,9,5,0,0,0],
-[0,9,8,0,0,0,0,6,0],
-[8,0,0,0,6,0,0,0,3],
-[4,0,0,8,5,3,0,0,1],
-[7,0,0,0,2,0,0,0,6],
-[0,6,0,0,0,0,2,8,0],
-[0,0,0,4,1,9,0,0,5],
-[0,0,0,0,8,0,0,7,9]]
-solve(board)
-for r in board: print(" ".join(map(str,r)))</code></pre>
-            </div>
-        </div>
-
-        <!-- Experiment 7 -->
-        <div class="experiment">
-            <div class="experiment-title">Experiment 7: Propositional Logic KB</div>
-            <div class="section">
-                <div class="section-label">Aim:</div>
-                <div class="section-content">Defines proposition structures (Not/And/Or), a simple knowledge base with rules premise→conclusion, and forward-chaining inference until fixpoint.[5]</div>
-            </div>
-            <div class="section">
-                <div class="section-label">Algorithm:</div>
-                <div class="section-content">Evaluates composite formulas against the current set; if a rule's premise is true, add its conclusion; repeat until no new facts.[5]</div>
-            </div>
-            <div class="code-container">
-                <div class="code-header">
-                    <span class="code-label">Code:</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'code7')">Copy</button>
-                </div>
-                <pre><code id="code7">class Prop: 
-    def __init__(self, name): self.name=name
-    def __repr__(self): return self.name
-class Not:
-    def __init__(self,p): self.p=p
-class And:
-    def __init__(self,*ps): self.ps=ps
-class Or:
-    def __init__(self,*ps): self.ps=ps
-
-class KB:
-    def __init__(self): self.facts=set(); self.rules=[]
-    def add(self,p): self.facts.add(p)
-    def rule(self, prem, concl): self.rules.append((prem,concl))
-    def eval(self, p):
-        if isinstance(p, Prop): return p in self.facts
-        if isinstance(p, Not):  return not self.eval(p.p)
-        if isinstance(p, And):  return all(self.eval(x) for x in p.ps)
-        if isinstance(p, Or):   return any(self.eval(x) for x in p.ps)
-        return False
-    def infer(self):
-        changed=True
-        while changed:
-            changed=False
-            for prem,concl in self.rules:
-                if self.eval(prem) and concl not in self.facts:
-                    self.facts.add(concl); changed=True
-
-A,B,C,D,E,F = map(Prop,"A B C D E F".split())
-kb = KB()
-kb.add(A); kb.add(B)
-kb.rule(A, C)
-kb.rule(B, D)
-kb.rule(And(C,D), E)
-kb.rule(Or(A, Not(B)), E)
-kb.rule(And(C, Not(D)), F)
-kb.infer()
-print("Facts:", sorted(p.name for p in kb.facts))</code></pre>
-            </div>
-        </div>
-
-        <!-- Experiment 8 -->
-        <div class="experiment">
-            <div class="experiment-title">Experiment 8: Wumpus World (Toy)</div>
-            <div class="section">
-                <div class="section-label">Aim:</div>
-                <div class="section-content">Simulates a 4×4 world with agent, gold, Wumpus; moves agent through scripted actions, picks gold, checks win/lose states.[5]</div>
-            </div>
-            <div class="section">
-                <div class="section-label">Algorithm:</div>
-                <div class="section-content">Maintains state; "safe" squares exclude Wumpus; terminates after success or death; illustrates propositional reasoning's effect via safety checks.[5]</div>
-            </div>
-            <div class="code-container">
-                <div class="code-header">
-                    <span class="code-label">Code:</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'code8')">Copy</button>
-                </div>
-                <pre><code id="code8">class WumpusWorld:
-    def __init__(self):
-        self.N=4; self.agent=(0,0); self.gold=(2,2); self.wumpus=(1,0)
-        self.gold_taken=False; self.over=False
-    def safe(self, pos): return pos!=self.wumpus
-    def move(self, d):
-        if self.over: return
-        x,y=self.agent
-        mv={'up':(-1,0),'down':(1,0),'left':(0,-1),'right':(0,1)}.get(d)
-        if not mv: return
-        nx,ny=x+mv[0], y+mv[1]
-        if 0<=nx<self.N and 0<=ny<self.N:
-            if not self.safe((nx,ny)): self.over=True; print("Wumpus!"); return
-            self.agent=(nx,ny); 
-            if self.agent==self.gold and not self.gold_taken: self.gold_taken=True; print("Grabbed gold")
-    def status(self):
-        if self.over: return "Dead"
-        if self.gold_taken and self.agent==(0,0): return "Success"
-        return "Exploring"
-
-w=WumpusWorld()
-for a in ['right','down','down','right','up','up','left','left']:
-    w.move(a); print(w.status())</code></pre>
-            </div>
-        </div>
-
-        <!-- Experiment 9 -->
-        <div class="experiment">
-            <div class="experiment-title">Experiment 9: Chatbot (Menu-driven)</div>
-            <div class="section">
-                <div class="section-label">Aim:</div>
-                <div class="section-content">Simple CLI chatbot with greetings, age guessing via remainders, jokes, facts, trivia, calculator, simulated weather/news, and exit.[6]</div>
-            </div>
-            <div class="section">
-                <div class="section-label">Algorithm:</div>
-                <div class="section-content">A looped menu dispatches to functions; input handling and basic randomness deliver varied responses.[6]</div>
-            </div>
-            <div class="code-container">
-                <div class="code-header">
-                    <span class="code-label">Code:</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'code9')">Copy</button>
-                </div>
-                <pre><code id="code9">import random, datetime, sys
-
-def age_guess():
-    try:
-        r3=int(input("r%3: ")); r5=int(input("r%5: ")); r7=int(input("r%7: "))
-    except: return None
-    return (r3*70 + r5*21 + r7*15) % 105
-
-def calc():
-    try:
-        a=float(input("a: ")); op=input("op(+,-,*,/): ").strip(); b=float(input("b: "))
-        if op=='+': print(a+b)
-        elif op=='-': print(a-b)
-        elif op=='*': print(a*b)
-        elif op=='/': print("Err div0" if b==0 else a/b)
-        else: print("Bad op")
-    except: print("Bad input")
-
-jokes = ["Why do programmers prefer dark mode? Because light attracts bugs!",
-         "Why do Java devs wear glasses? Because they don't C."]
-facts = ["Python named after Monty Python.", "First 1GB HDD weighed ~500 lbs (1980)."]
-news  = ["AI transforming industries.", "Python most popular language."]
-triv  = {"Who developed Python?":"Guido van Rossum",
-         "What does HTML stand for?":"HyperText Markup Language"}
-
-def main():
-    name = input("Your name: ").strip() or "Friend"
-    print(f"Hi {name}! Menu: 1-Weather 2-News 3-Calc 4-Joke 5-Fact 6-Trivia 7-Guess age 8-Exit")
-    while True:
-        c=input("> ").strip()
-        if c=='1': print(f"Weather: {random.choice(['sunny','rainy','cloudy'])}, {random.randint(-5,38)}C")
-        elif c=='2': print(random.choice(news))
-        elif c=='3': calc()
-        elif c=='4': print(random.choice(jokes))
-        elif c=='5': print(random.choice(facts))
-        elif c=='6':
-            q,ans = random.choice(list(triv.items()))
-            print(q); print("Correct!" if input("Ans: ").strip().lower()==ans.lower() else f"Ans: {ans}")
-        elif c=='7':
-            age = age_guess()
-            if age is not None: print(f"Age: {age}")
-        elif c=='8':
-            print("Bye!", datetime.datetime.now().strftime("%H:%M")); break
-        else: print("1..8 only")
-if __name__=="__main__": main()</code></pre>
-            </div>
-        </div>
-
-        <!-- Experiment 10 -->
-        <div class="experiment">
-            <div class="experiment-title">Experiment 10: Rock–Paper–Scissors</div>
-            <div class="section">
-                <div class="section-label">Aim:</div>
-                <div class="section-content">Loops reading user choice, randomly draws computer choice, compares per standard rules, supports "exit" to quit.[6]</div>
-            </div>
-            <div class="section">
-                <div class="section-label">Algorithm:</div>
-                <div class="section-content">Enumerates the three winning relations; tie when equal; otherwise loss.[6]</div>
-            </div>
-            <div class="code-container">
-                <div class="code-header">
-                    <span class="code-label">Code:</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'code10')">Copy</button>
-                </div>
-                <pre><code id="code10">import random
-
-WINS = {('Rock','Scissors'), ('Paper','Rock'), ('Scissors','Paper')}
-CHO = ['Rock','Paper','Scissors']
-
-print("Rock, Paper, Scissors (type exit)")
-while True:
-    me = input("Your choice: ").strip().capitalize()
-    if me=='Exit': print("Thanks!"); break
-    if me not in CHO: print("Pick Rock/Paper/Scissors"); continue
-    ai = random.choice(CHO)
-    print("Computer:", ai)
-    if me==ai: print("Tie!")
-    elif (me,ai) in WINS: print("You win!")
-    else: print("You lose!")</code></pre>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>All code examples are ready to copy and use!</p>
-        </div>
-    </div>
-
-    <script>
-        function copyCode(button, codeId) {
-            const codeElement = document.getElementById(codeId);
-            const text = codeElement.textContent;
-            
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = button.textContent;
-                button.textContent = 'Copied!';
-                button.classList.add('copied');
                 
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.classList.remove('copied');
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy:', err);
-                alert('Failed to copy code. Please select and copy manually.');
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Project 2" class="project-img">
+                    <div class="project-info">
+                        <h3 class="project-title">AI Music Generator</h3>
+                        <p>Web application that uses machine learning to generate original music compositions based on user input.</p>
+                        <div class="project-links">
+                            <a href="https://example.com/demo2" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.9rem;">Live Demo</a>
+                            <a href="https://github.com/username/project2" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Project 3" class="project-img">
+                    <div class="project-info">
+                        <h3 class="project-title">Interactive Data Dashboard</h3>
+                        <p>Real-time data visualization platform with custom animations and dynamic filtering capabilities.</p>
+                        <div class="project-links">
+                            <a href="https://example.com/demo3" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.9rem;">Live Demo</a>
+                            <a href="https://github.com/username/project3" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <a href="#home" class="logo" style="font-size: 2rem;">sri ramakrishnan</a>
+            <div class="social-links">
+                <a href="https://github.com/username" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://dribbble.com/username" target="_blank"><i class="fab fa-dribbble"></i></a>
+                <a href="https://behance.net/username" target="_blank"><i class="fab fa-behance"></i></a>
+                <a href="https://linkedin.com/in/username" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://twitter.com/username" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="copyright">© 2023 sri ramakrishnan Creative. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             });
-        }
+        });
+        
+        // Scroll animation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animate elements when scrolling
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.project-card, .about-content > div');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if(elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state
+        document.querySelectorAll('.project-card, .about-content > div').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'all 0.6s ease-out';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
     </script>
 </body>
 </html>
